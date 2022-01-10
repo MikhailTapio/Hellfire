@@ -1,0 +1,11 @@
+modLoader="javafml"
+loaderVersion="[38,)"
+license="GPL v3"
+[[mods]]
+modId="hellfire"
+version="1.0.0"
+displayName="Hellfire:Fireball Launcher"
+logoFile="logo.png"
+authors="Tapio"
+description='''
+'''
