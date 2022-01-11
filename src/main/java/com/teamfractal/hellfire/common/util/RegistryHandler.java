@@ -1,7 +1,8 @@
 package com.teamfractal.hellfire.common.util;
 
+import com.teamfractal.hellfire.client.config.ClientConfig;
 import com.teamfractal.hellfire.common.Hellfire;
-import com.teamfractal.hellfire.common.config.Config;
+import com.teamfractal.hellfire.common.config.CommonConfig;
 import com.teamfractal.hellfire.common.item.init.ItemInit;
 import net.minecraft.world.item.Item;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -18,6 +19,7 @@ public class RegistryHandler {
     public static void register(){
         ItemInit.register();
         Items.register(eventBus);
-        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.CONFIG);
+        ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, ClientConfig.CONFIG);
     }
 }
