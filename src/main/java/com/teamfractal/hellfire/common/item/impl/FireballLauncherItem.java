@@ -47,12 +47,12 @@ public class FireballLauncherItem extends Item {
         if(player.getAbilities().instabuild || !bullet.isEmpty()){
             if(!world.isClientSide) fire(stack,bullet,player,world);
         }else{
-            if (ClientConfig.AMMO_TIP_MESSAGE.get() && world.isClientSide) player.sendMessage(new TranslatableComponent("msg.hellfire.insufficient_fireball"),NIL_UUID);
-            if (CommonConfig.AMMO_TIP_BUTTON_CLICK_SOUND.get() && !world.isClientSide) {
+            if (ClientConfig.AMMO_TIP_MESSAGE.get() && world.isClientSide)
+                player.sendMessage(new TranslatableComponent("msg.hellfire.insufficient_fireball"),NIL_UUID);
+            if (CommonConfig.AMMO_TIP_BUTTON_CLICK_SOUND.get() && !world.isClientSide)
                 world.playSound(null, player.blockPosition(), SoundEvents.WOODEN_BUTTON_CLICK_ON, SoundSource.PLAYERS, 1, 1);
-            }else if (ClientConfig.AMMO_TIP_BUTTON_CLICK_SOUND.get()){
+            if (ClientConfig.AMMO_TIP_BUTTON_CLICK_SOUND.get() && world.isClientSide && !CommonConfig.AMMO_TIP_BUTTON_CLICK_SOUND.get())
                 player.playSound(SoundEvents.WOODEN_BUTTON_CLICK_ON,1,1);
-            }
         }
 
         return InteractionResultHolder.pass(stack);
