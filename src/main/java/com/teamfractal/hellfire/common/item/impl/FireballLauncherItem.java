@@ -47,7 +47,8 @@ public class FireballLauncherItem extends Item {
             if(player.getAbilities().instabuild || !bullet.isEmpty()){
                 fire(stack,bullet,player,world);
             }else{
-                player.sendMessage(new TranslatableComponent("msg.hellfire.insufficient_fireball"),NIL_UUID);
+                if (Config.AMMO_TIP_MESSAGE.get()) player.sendMessage(new TranslatableComponent("msg.hellfire.insufficient_fireball"),NIL_UUID);
+                if (Config.AMMO_TIP_BUTTON_CLICK_SOUND.get()) world.playSound(null, player.blockPosition(), SoundEvents.WOODEN_BUTTON_CLICK_ON, SoundSource.PLAYERS, 1, 1);
             }
         }
         return InteractionResultHolder.pass(stack);

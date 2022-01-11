@@ -10,5 +10,9 @@ public class Config {
             .defineInRange("fireball_speed",5,0.1,25);
     public static final ForgeConfigSpec.IntValue FIREBALL_LAUNCHER_CD = BUILDER.comment("How long should the fireball launcher's cool down time be?","The unit is tick. If the value is 20, the CD time would be 20 ticks(1 sec)")
             .defineInRange("cd_time",20,1,Integer.MAX_VALUE);
+    public static final ForgeConfigSpec.BooleanValue AMMO_TIP_BUTTON_CLICK_SOUND = BUILDER.comment("Should we play a button-clicked sound to notify insufficient fireball?")
+            .define("insufficient_tip_sound", true);
+    public static final ForgeConfigSpec.BooleanValue AMMO_TIP_MESSAGE = BUILDER.comment("Should we send a message to notify insufficient fireball?")
+            .define("insufficient_tip_message", true);
     public static final ForgeConfigSpec CONFIG = BUILDER.build();
 }
