@@ -12,6 +12,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Rarity;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.util.UseAction;
+import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 
 
@@ -52,7 +53,10 @@ public class FireballLauncherItem extends Item {
     }
 
     public void fire(ItemStack weapon, ItemStack bullet, PlayerEntity player, World world){
-        final FireballEntity projectile = new FireballEntity(world,player,0,0,0, Hellfire.CONFIG.FIREBALL_EXPLOSION_POWER);
+        final float f = -MathHelper.sin(player.getYaw() * ((float)Math.PI / 180)) * MathHelper.cos(player.getPitch() * ((float)Math.PI / 180));
+        final float g = -MathHelper.sin(player.getPitch() * ((float)Math.PI / 180));
+        final float h = MathHelper.cos(player.getYaw() * ((float)Math.PI / 180)) * MathHelper.cos(player.getPitch() * ((float)Math.PI / 180));
+        final FireballEntity projectile = new FireballEntity(world,player,f,g,h, Hellfire.CONFIG.FIREBALL_EXPLOSION_POWER);
         projectile.setNoGravity(true);
         projectile.setOwner(player);
         projectile.setPos(player.getX() + player.getRotationVector().x * 4.0D, player.getBodyY(0.5D) + 0.5D, player.getZ() + player.getRotationVector().z * 4.0D);
