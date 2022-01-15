@@ -59,7 +59,10 @@ public class FireballLauncherItem extends Item {
     }
 
     public void fire(ItemStack weapon, ItemStack bullet, Player player, Level world){
-        final LargeFireball projectile = new LargeFireball(world,player,0,0,0, CommonConfig.FIREBALL_EXPLOSION_POWER.get());
+        final float f = (float) (-Math.sin(player.getYRot() * ((float)Math.PI / 180)) * Math.cos(player.getXRot() * ((float)Math.PI / 180)));
+        final float g = (float) -Math.sin(player.getXRot() * ((float)Math.PI / 180));
+        final float h = (float) (Math.cos(player.getYRot() * ((float)Math.PI / 180)) * Math.cos(player.getXRot() * ((float)Math.PI / 180)));
+        final LargeFireball projectile = new LargeFireball(world,player,f,g,h, CommonConfig.FIREBALL_EXPLOSION_POWER.get());
         projectile.setNoGravity(true);
         projectile.setOwner(player);
         //todo:make the fireball's generation location real, considering the interaction hand.
