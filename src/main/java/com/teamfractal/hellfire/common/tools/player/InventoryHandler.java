@@ -9,10 +9,11 @@ import net.minecraft.world.item.ItemStack;
 public class InventoryHandler {
     public static ItemStack searchFor(Player entity, Item item, int startSlot){
         final NonNullList<ItemStack> itemList = entity.getInventory().items;
-        if(startSlot < itemList.size()){
+        final int size = itemList.size();
+        if (startSlot < size) {
             final ItemStack stackToTest = itemList.get(startSlot);
-            return (stackToTest.getItem() == item)? stackToTest : searchFor(entity,item,startSlot + 1);
-        }else{
+            return (stackToTest.getItem() == item) ? stackToTest : searchFor(entity, item, startSlot + 1);
+        } else {
             return ItemStack.EMPTY;
         }
     }

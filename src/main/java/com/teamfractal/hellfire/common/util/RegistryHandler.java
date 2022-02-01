@@ -14,9 +14,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class RegistryHandler {
     public static final DeferredRegister<Item> Items = DeferredRegister.create(ForgeRegistries.ITEMS, Hellfire.MODID);
-    public static final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
     public static void register(){
+        final IEventBus eventBus = FMLJavaModLoadingContext.get().getModEventBus();
         ItemInit.register();
         Items.register(eventBus);
         ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, CommonConfig.CONFIG);
